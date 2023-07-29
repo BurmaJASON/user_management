@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
@@ -22,7 +23,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|string|email',
+            'email' => ['required','email', 'max:255', Rule::exists('users', 'email')],
             'password' => 'required|string|min:6'
         ];
     }

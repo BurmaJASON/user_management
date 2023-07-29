@@ -34,6 +34,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+    //Accessors
+    public function getNameAttribute($value) {
+        return ucwords($value);
+    }
+
     /**
      * The attributes that should be cast.
      *

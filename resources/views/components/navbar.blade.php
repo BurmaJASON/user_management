@@ -3,13 +3,14 @@
         <li>
             <a href="{{ route('dashboard') }}">
                 <span class="icon">
-                    <ion-icon name="school"></ion-icon>
+                    {{-- <ion-icon name="school"></ion-icon> --}}
+                    <ion-icon name="desktop-outline"></ion-icon>
                 </span>
-                <span class="title">Burma Academy</span>
+                <span class="title">User Management</span>
             </a>
         </li>
 
-        <li>
+         <li>
             <a href="{{ route('dashboard') }}">
                 <span class="icon">
                     <ion-icon name="home-outline"></ion-icon>
@@ -18,7 +19,7 @@
             </a>
         </li>
 
-        <li>
+        {{--<li>
             <a href="{{ route('list') }}">
                 <span class="icon">
                     <ion-icon name="people-outline"></ion-icon>
@@ -73,7 +74,7 @@
                 </span>
                 <span class="title">Password</span>
             </a>
-        </li>
+        </li> --}}
 
         <li>
 

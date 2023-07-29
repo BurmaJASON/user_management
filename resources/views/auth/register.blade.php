@@ -7,9 +7,9 @@
                     <form method="POST" action="">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="form-label">User Name</label>
-                            <input type="text" class="form-control" name="user_name" aria-describedby="emailHelp" value="{{ old('user_name') }}" required>
-                            <x-error name="user_name"></x-error>
+                            <label for="" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="name" aria-describedby="emailHelp" value="{{ old('name') }}" required>
+                            <x-error name="name"></x-error>
 
                         </div>
                         <div class="mb-3">
@@ -25,6 +25,11 @@
                           name="password" id="exampleInputPassword1" required>
                           <x-error name="password"></x-error>
                         </div>
+                        <div class="mb-3">
+                            <label for="password_confirmation" class="form-label">Confirm Password</label>
+                            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required>
+                            <x-error name="password_confirmation"></x-error>
+                          </div>
                         <div class="d-flex justify-content-center mb-3">
                             <button type="submit" class="btn btn-primary">Register</button>
                         </div>
