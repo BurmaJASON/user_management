@@ -1,12 +1,14 @@
 <x-layout>
 
+    <x-cards  :count="$count" ></x-cards>
 
-    @if(auth()->check())
     <div class="details">
-        Hello {{ auth()->user()->name }}
-    </div>
+            {{-- <x-recentLogs :logs="$logs" ></x-recentLogs> --}}
+            <x-recentLogs></x-recentLogs>
 
-    @endif
+            <!-- ================= New Customers ================ -->
+            <x-recentUsers :users="$users"></x-recentUsers>
+    </div>
 
 
 

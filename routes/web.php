@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +32,12 @@ Route::middleware(['guest'])->group(function(){
 Route::middleware(['auth'])->group(function() {
     Route::get('dashboard',[AuthController::class,'index'])->name('dashboard');
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
+
+    // profile
+    Route::get('changePassword',[ProfileController::class, 'passwordPage'])->name('password#page');
+    Route::post('changePassword',[ProfileController::class, 'changePassword'])->name('password#change');
+    Route::resource('profile', ProfileController::class);
+
+    // users
+    Route::resource('user',UserController::class);
 });

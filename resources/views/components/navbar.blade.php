@@ -3,14 +3,13 @@
         <li>
             <a href="{{ route('dashboard') }}">
                 <span class="icon">
-                    {{-- <ion-icon name="school"></ion-icon> --}}
                     <ion-icon name="desktop-outline"></ion-icon>
                 </span>
                 <span class="title">User Management</span>
             </a>
         </li>
 
-         <li>
+        <li>
             <a href="{{ route('dashboard') }}">
                 <span class="icon">
                     <ion-icon name="home-outline"></ion-icon>
@@ -18,6 +17,19 @@
                 <span class="title">Dashboard</span>
             </a>
         </li>
+
+
+        <li>
+            <a href="{{ route('user.index') }}">
+                <span class="icon">
+                    <ion-icon name="people-outline"></ion-icon>
+                </span>
+                <span class="title">Admin/User</span>
+            </a>
+        </li>
+
+
+
 
         {{--<li>
             <a href="{{ route('list') }}">
@@ -63,7 +75,7 @@
                 </span>
                 <span class="title">Comments</span>
             </a>
-        </li>
+        </li> --}}
 
 
 
@@ -74,10 +86,9 @@
                 </span>
                 <span class="title">Password</span>
             </a>
-        </li> --}}
+        </li>
 
         <li>
-
             <a href="#">
                 <span class="icon">
                     <ion-icon name="log-out-outline"></ion-icon>
@@ -86,7 +97,6 @@
                     @csrf
                     <button class="title btn btn-secondary-link " type="submit" >Sign Out</button>
                 </form>
-
             </a>
         </li>
     </ul>

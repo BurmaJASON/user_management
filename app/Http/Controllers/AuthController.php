@@ -13,7 +13,10 @@ class AuthController extends Controller
 
     //Dashboard
     public function index() {
-        return view('dashboard');
+        return view('dashboard',[
+            'users' => User::latest()->take(6)->get(),
+            'count' => User::count()
+        ]);
     }
 
     //Register
