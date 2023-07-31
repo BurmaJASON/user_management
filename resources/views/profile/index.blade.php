@@ -6,7 +6,7 @@
         <form action="{{ route('profile.update', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
-            
+
             @if(request()->routeIs('profile.index'))
                 <legend class="text-center h4">Your Profile</legend>
             @else
@@ -48,8 +48,8 @@
             @endif
 
             <div class="mb-3">
-                <label  class="control-label mb-1">Role</label>
-                <input name="role" type="text" class="form-control" value="{{ Auth::user()->status == 2  ? 'Admin' : 'User'   }}" disabled>
+                <label  class="control-label mb-1">Access</label>
+                <input name="role" type="text" class="form-control" value="{{ Auth::user()->status == 2  ? 'Approved' : 'Rejected'   }}" disabled>
             </div>
 
             <div class="mb-1 text-center">

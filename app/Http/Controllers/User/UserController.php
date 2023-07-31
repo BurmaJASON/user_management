@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserRequest;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,13 +13,9 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(UserService $userService)
     {
-        return view('user.index',[
-            'users' => User::latest()
-                            ->filter(request('search'))
-                            ->get()
-        ]);
+        return $userService->index();
     }
 
     /**
@@ -25,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -47,24 +45,24 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(UserService $userService,string $id)
     {
-        //
+        return $userService->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request,UserService $userService, string $id)
     {
-        //
+        return $userService->update($request,$id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(UserService $userService,string $id)
     {
-        //
+        return $userService->delete($id);
     }
 }

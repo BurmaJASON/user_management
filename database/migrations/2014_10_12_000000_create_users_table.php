@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('status', [1, 2])->default(2); // 2 is Admin and 1 is user
+            $table->enum('status', [1, 2])->default(2); // 2 is Approve and 1 is reject
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

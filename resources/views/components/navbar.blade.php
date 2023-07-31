@@ -24,7 +24,7 @@
                 <span class="icon">
                     <ion-icon name="people-outline"></ion-icon>
                 </span>
-                <span class="title">Admin/User</span>
+                <span class="title">Users</span>
             </a>
         </li>
 
