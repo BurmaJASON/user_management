@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function() {
 
     // profile
     Route::get('changePassword',[ProfileController::class, 'passwordPage'])->name('password#page');
-    Route::post('changePassword',[ProfileController::class, 'changePassword'])->name('password#change');
+    Route::put('changePassword',[ProfileController::class, 'changePassword'])->name('password#change');
     Route::resource('profile', ProfileController::class);
 
     // users

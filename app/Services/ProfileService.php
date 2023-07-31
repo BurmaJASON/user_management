@@ -28,6 +28,16 @@ class ProfileService
             return back()->with('passUpdateFail', 'Old Password Do not Match!');
         }
     }
+
+    //profile change
+    public function update($request, $id) {
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+        ];
+        User::where('id',$id)->update($data);
+        return redirect('dashboard')->with('success', 'Your Account is successfully updated!');
+    }
 }
 
 ?>

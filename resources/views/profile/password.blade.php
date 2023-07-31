@@ -8,6 +8,7 @@
         @endif
         <form action="{{ route('password#change') }}" method="POST" >
             @csrf
+            @method('put')
             <legend class="text-center">Password Change Form</legend>
             <div class="mb-3">
                 <label for="currentPassword" class="form-label">Current Password</label>

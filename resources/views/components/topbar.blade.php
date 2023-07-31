@@ -24,7 +24,7 @@
 
     </div>
     <div class="user">
-        <a href="">
+        <a href="{{ route('profile.index') }}">
             <img src="{{ asset('assets/imgs/abstract-user-flat-4.png') }}" alt="Admin Profile" title="{{ auth()->user()->name }}'s Profile">
         </a>
     </div>
