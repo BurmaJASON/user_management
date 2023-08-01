@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\UserLogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,4 +41,7 @@ Route::middleware(['auth'])->group(function() {
 
     // users
     Route::resource('user',UserController::class);
+
+    // logs
+    Route::get('log',[UserLogController::class,'index'])->name('log.index');
 });

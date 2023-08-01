@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\UserActionLog;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,6 +29,10 @@ class UserService
 
         User::create($data);
 
+        $logData = [$data['name'],$data['email']];
+
+        UserActionLog::dispatch(Auth()->user()->id,'created',$logData);
+
         return redirect()->route('user.index')->with('success', "You have successfully created an account!");
     }
 
@@ -49,6 +54,11 @@ class UserService
         }
         User::where('id',$id)->update($data);
         $user = User::find($id);
+        $logData = [
+            'name' => $user->name,
+            'email' => $user->email,
+        ];
+        UserActionLog::dispatch(Auth()->user()->id,'updated',$logData);
 
         return redirect()->route('user.index')->with('success', "$user->name's account is successfully updated!");
     }
@@ -57,6 +67,7 @@ class UserService
     public function delete($id) {
         $user = User::find($id);
         User::where('id',$id)->delete();
+        UserActionLog::dispatch(Auth()->user()->id,'deleted',$user);
         return redirect()->route('user.index')->with('success', "$user->name's account is completely deleted!");
     }
 }

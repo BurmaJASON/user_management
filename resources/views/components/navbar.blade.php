@@ -28,6 +28,15 @@
             </a>
         </li>
 
+        <li>
+            <a href="{{ route('log.index') }}">
+                <span class="icon">
+                    <ion-icon name="people-outline"></ion-icon>
+                </span>
+                <span class="title">Logs</span>
+            </a>
+        </li>
+
 
 
 
