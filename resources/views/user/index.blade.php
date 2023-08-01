@@ -4,7 +4,9 @@
         <div class="recentLogs">
             <div class="cardHeaders">
                 <h3>Total - {{ $users->total() }}</h3>
-                <a href="{{ route('user.create') }}" class="btn">Create User</a>
+                @if (Auth::user()->status == 2)
+                    <a href="{{ route('user.create') }}" class="btn">Create User</a>
+                @endif
             </div>
 
             @if (count($users) != 0)
@@ -14,7 +16,7 @@
                             <td>No</td>
                             <td>Name</td>
                             <td>Email</td>
-                            <td>Access</td>
+                            <td>Status</td>
                             <td>Joined Date</td>
                             <td>Actions</td>
                         </tr>
@@ -29,6 +31,8 @@
                                 <td  class="">
                                     @if ($user->status == 2)
                                         <span class="status delivered">Approved</span>
+                                    @elseif ($user->status == 0)
+                                        <span class="status pending">Pending</span>
                                     @else
                                         <span class="status return">Rejected</span>
                                     @endif
@@ -40,7 +44,7 @@
 
                                     @else
 
-                                        <a href="" class="btn btn-link-primary">
+                                        <a href="{{ route('user.create') }}" class="btn btn-link-primary">
                                             <ion-icon name="eye"></ion-icon>
                                         </a>
                                         @if (Auth()->user()->status == 2)

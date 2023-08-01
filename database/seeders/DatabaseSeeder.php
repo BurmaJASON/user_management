@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // User data seeding
         User::factory(20)->create();
+
     }
 }

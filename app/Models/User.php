@@ -3,11 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -25,6 +26,8 @@ class User extends Authenticatable
         'status'
     ];
 
+    public $timestamps = true;
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -39,12 +42,15 @@ class User extends Authenticatable
     // filter
     public function scopeFilter($query, $filter) {
         $query->when(request('search'),function($query,$search) {
-            $lowercaseAdmin = strtolower('Admin');
-            $lowercaseUser = strtolower('User');
-            if (strpos($search, $lowercaseAdmin) !== false) {
-                $query->where('status', '=', 2); // Admin status is 2
-            } elseif (strpos($search, $lowercaseUser) !== false) {
-                $query->where('status', '=', 1); // User status is 1
+            $lowercaseApprove = strtolower('approved');
+            $lowercaseReject = strtolower('rejected');
+            $lowercasePending = strtolower('pending');
+            if (strpos($search, $lowercaseApprove) !== false) {
+                $query->where('status', '=', 2); // Approve status is 2
+            } elseif (strpos($search, $lowercaseReject) !== false) {
+                $query->where('status', '=', 1); // Reject status is 1
+            }elseif (strpos($search, $lowercasePending) !== false) {
+                $query->where('status', '=', 0); // Pending status is 0
             } else {
                 $query->where('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('email', 'LIKE', '%' . $search . '%');

@@ -30,7 +30,9 @@
             <div class="mb-3">
                 <label  class="control-label mb-1">Access</label>
                 <select name="status"  class="form-control @error('status') is-invalid @enderror" >
-                    {{-- <option value="">Role</option> --}}
+                    <option value="0" @if ($user->status==0)
+                                            selected
+                                        @endif>Pending</option>
                     <option value="2" @if ($user->status==2)
                                                 selected
                                             @endif>Approve</option>

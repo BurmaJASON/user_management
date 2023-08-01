@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
@@ -14,6 +15,20 @@ class UserService
                             ->paginate(6)
                             ->withQueryString()
         ]);
+    }
+
+    //store
+    public function store($request) {
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'status' => $request->input('status'),
+            'password' => Hash::make($request->input('password'))
+        ];
+
+        User::create($data);
+
+        return redirect()->route('user.index')->with('success', "You have successfully created an account!");
     }
 
     // edit
@@ -30,7 +45,7 @@ class UserService
             'status' => $request->input('status')
         ];
         if($request->input('password') != null) {
-            $data['password'] = $request->input('password');
+            $data['password'] = Hash::make($request->input('password'));
         }
         User::where('id',$id)->update($data);
         $user = User::find($id);

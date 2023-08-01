@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('status', [1, 2])->default(2); // 2 is Approve and 1 is reject
+            $table->enum('status', [0,1,2])->nullable()->default(0); // 2 is Approve , 1 is reject, 0 is pending
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

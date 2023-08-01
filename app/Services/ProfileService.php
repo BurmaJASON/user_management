@@ -15,10 +15,10 @@ class ProfileService
         $pass = $user->password;
 
         if(Hash::check($request->input('currentPassword'), $pass)) {
-            $newPass = Hash::make($request->input('password'));
-
+            $newPass = $request->input('password');
+            
             $updateUser = [
-                'password' => $newPass,
+                'password' => Hash::make($newPass),
                 'updated_at' => Carbon::now()
             ];
             User::where('id',Auth::user()->id)->update($updateUser);
