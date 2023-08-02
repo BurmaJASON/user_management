@@ -31,7 +31,7 @@
         <li>
             <a href="{{ route('log.index') }}">
                 <span class="icon">
-                    <ion-icon name="people-outline"></ion-icon>
+                    <ion-icon name="file-tray-full-outline"></ion-icon>
                 </span>
                 <span class="title">Logs</span>
             </a>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\User;
+use App\Models\UserLog;
 use App\Services\UserService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
@@ -36,9 +38,9 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(UserService $userService,string $id)
     {
-        //
+        return $userService->show($id);
     }
 
     /**

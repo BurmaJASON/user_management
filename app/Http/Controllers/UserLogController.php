@@ -9,7 +9,7 @@ class UserLogController extends Controller
 {
     //index
     public function index() {
-        $logs = UserLog::latest()->get();
+        $logs = UserLog::latest()->paginate(10);
         foreach ($logs as $log) {
             $json = $log->data;
             $decodedData = json_decode($json, true);

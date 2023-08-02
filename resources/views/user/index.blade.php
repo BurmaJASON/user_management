@@ -44,7 +44,7 @@
 
                                     @else
 
-                                        <a href="{{ route('user.create') }}" class="btn btn-link-primary">
+                                        <a href="{{ route('user.show',$user->id) }}" class="btn btn-link-primary">
                                             <ion-icon name="eye"></ion-icon>
                                         </a>
                                         @if (Auth()->user()->status == 2)

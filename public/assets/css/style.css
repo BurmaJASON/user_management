@@ -353,7 +353,7 @@ body {
 }
  .recentLogs table tr td {
   padding: 10px;
-  text-align: center;
+  /* text-align: center; */
 }
  /* .recentLogs table tr td:last-child {
   text-align: end;
@@ -379,6 +379,15 @@ body {
   border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
+}
+
+.status.event {
+    padding: 2px 4px;
+    background: #000000;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
 }
 .status.return {
   padding: 2px 4px;

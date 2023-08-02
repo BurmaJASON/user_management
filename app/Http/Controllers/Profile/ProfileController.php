@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Models\User;
+use App\Models\UserLog;
 use Illuminate\Http\Request;
+use App\Services\ProfileService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Profile\ProfileRequest;
 use App\Http\Requests\Profile\ProfileUpdateRequest;
-use App\Services\ProfileService;
 
 class ProfileController extends Controller
 {
 
-    public function index() {
-        return view('profile.index');
+    public function index(ProfileService $profileService) {
+        return $profileService->index();
     }
     /**
      * Show the form for editing the specified resource.

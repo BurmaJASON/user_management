@@ -4,7 +4,7 @@
 
     <div class="details">
             {{-- <x-recentLogs :logs="$logs" ></x-recentLogs> --}}
-            <x-recentLogs></x-recentLogs>
+            <x-recentLogs :logs="$logs"></x-recentLogs>
 
             <!-- ================= New Customers ================ -->
             <x-recentUsers :users="$users"></x-recentUsers>
