@@ -64,28 +64,30 @@
         </form>
     </div>
 
-    <div class="p-5">
-        <h4>
-            Recent Activity
-        </h4>
-        <hr>
-        <table>
-            @if (count($logs) != 0)
-            <tbody>
-                @foreach ($logs as $log)
-                    <tr>
-                        <td>
-                            <span>
-                                <b class="me-2">You</b> <span class="status event">{{ $log->event }}</span>   <b class="mx-2 text-secondary">{{ $log->data['name'] }}({{ $log->data['email'] }})</b>  {{ $log->created_at->diffForHumans() }}.
-                            </span>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-            @else
-                <h1 class="text-center text-secondary mt-5">No Activities yet!</h1>
-            @endif
-        </table>
-        <hr>
-    </div>
+    @if (request()->routeIs('profile.index'))
+        <div class="p-5">
+            <h4>
+                Recent Activity
+            </h4>
+            <hr>
+            <table>
+                @if (count($logs) != 0)
+                <tbody>
+                    @foreach ($logs as $log)
+                        <tr>
+                            <td>
+                                <span>
+                                    <b class="me-2">You</b> <span class="status event">{{ $log->event }}</span>   <b class="mx-2 text-secondary">{{ $log->data['name'] }}({{ $log->data['email'] }})</b>  {{ $log->created_at->diffForHumans() }}.
+                                </span>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+                @else
+                    <h1 class="text-center text-secondary mt-5">No Activities yet!</h1>
+                @endif
+            </table>
+            <hr>
+        </div>
+    @endif
 </x-layout>

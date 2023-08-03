@@ -40,22 +40,6 @@ class User extends Authenticatable
 
 
     // filter
-    // public function scopeFilter($query, $filter) {
-    //     $query->when($filter['search'], function ($query, $search) {
-    //         $lowercaseSearch = strtolower($search);
-
-    //         if (strpos($lowercaseSearch, 'approved') !== false) {
-    //             $query->where('status', 2); // Approve status is 2
-    //         } elseif (strpos($lowercaseSearch, 'rejected') !== false) {
-    //             $query->where('status', 1); // Reject status is 1
-    //         } elseif (strpos($lowercaseSearch, 'pending') !== false) {
-    //             $query->where('status', 0); // Pending status is 0
-    //         } else {
-    //             $query->where('name', 'LIKE', '%' . $search . '%')
-    //                 ->orWhere('email', 'LIKE', '%' . $search . '%');
-    //         }
-    //     });
-    // }
     public function scopeFilter($query, $filter) {
         $query->when(request('search'),function($query,$search) {
             $lowercaseApprove = strtolower('Approved');

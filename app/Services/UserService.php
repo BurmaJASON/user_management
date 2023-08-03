@@ -51,6 +51,7 @@ class UserService
             'password' => Hash::make($request->input('password'))
         ];
 
+
         UserActionLog::dispatch(Auth()->user()->id,'created',$data);
 
         User::create($data);

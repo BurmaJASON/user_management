@@ -21,11 +21,11 @@ Route::middleware(['guest'])->group(function(){
     Route::redirect('/','register');
     Route::get('register',function() {
         return view('auth.register');
-    })->name('register');
+    });
     Route::post('register',[AuthController::class,'register'])->name('register');
     Route::get('login',function() {
         return view('auth.login');
-    })->name('login');
+    });
     Route::post('login',[AuthController::class,'login'])->name('login');
 });
 
@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function() {
     // profile
     Route::get('changePassword',[ProfileController::class, 'passwordPage'])->name('password#page');
     Route::put('changePassword',[ProfileController::class, 'changePassword'])->name('password#change');
-    Route::resource('profile', ProfileController::class);
+    Route::resource('profile', ProfileController::class)->only(['index', 'update', 'edit']);
 
     // users
     Route::resource('user',UserController::class);

@@ -15,7 +15,14 @@
                             <tr>
                                 <td>
                                     <span>
-                                        <b class="me-2">{{ $log->user->id == Auth()->user()->id ? 'You' : $log->user->name }}</b> <span class="status event">{{ $log->event }}</span>   <b class="mx-2 text-secondary">{{ $log->data['name'] }}({{ $log->data['email'] }})</b>  {{ $log->created_at->diffForHumans() }}.
+                                        <b class="me-2">{{ $log->user->id == Auth()->user()->id ? 'You' : $log->user->name }}</b>
+                                        <span class="status event">{{ $log->event }}</span>
+                                        @if ($log->data['email'] == Auth()->user()->email)
+                                            <b class="mx-2 text-secondary">your account</b>
+                                        @else
+                                            <b class="mx-2 text-secondary">{{ $log->data['name'] }}({{ $log->data['email'] }})</b>
+                                        @endif
+                                        {{ $log->created_at->diffForHumans() }}.
                                     </span>
                                 </td>
                             </tr>
